@@ -3,5 +3,6 @@ name = "chip8"
 version = "0.1.0"
 authors = ["Kevin Caffrey"]
 edition = "2018"
+license = "MIT"
 
 [dependencies]
