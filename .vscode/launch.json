@@ -25,11 +25,11 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'main'",
+            "name": "Debug executable 'chip8'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=main",
+                    "--bin=chip8",
                     "--package=chip8"
                 ],
                 "filter": {
@@ -42,12 +42,12 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'main'",
+            "name": "Debug unit tests in executable 'chip8'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=main",
+                    "--bin=chip8",
                     "--package=chip8"
                 ],
                 "filter": {
