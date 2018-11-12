@@ -15,3 +15,4 @@ cargo run
 
 ## Resources
 - [CHIP-8 Wikipedia page](https://en.wikipedia.org/wiki/CHIP-8)
+- [Cowgod's Chip-8 Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM)

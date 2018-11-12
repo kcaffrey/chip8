@@ -1,3 +1,8 @@
+extern crate chip8;
+
+use chip8::Emulator;
+
 fn main() {
-    println!("Hello, world");
+    let mut emulator = Emulator::new();
+    emulator.run()
 }
