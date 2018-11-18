@@ -51,7 +51,7 @@ Some of the choices around quirks are listed here:
 - When drawing a sprite, if the sprite would go beyond the edge of the screen it is wrapped around the edge.
 - When loading and storing registers, the value of `I` (the address register) is modified
 - Instructions which set the carry flag (in `VF`), do so last. If `VF` is used as an operand, its value will be overwritten with the carry flag.
-- The two shift instructions operate on `VY` and store the result in `VX` as indicated in [Mastering CHIP-8](http://mattmik.com/files/chip8/mastering/chip8.html) and implemented by Octo, despite Wikipedia and [Cowgod](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#Fx1E) documenting otherwise.
+- The two shift instructions operate on `VY` and store the result in `VX` as indicated in [Mastering CHIP-8](http://mattmik.com/files/chip8/mastering/chip8.html) and implemented by Octo, despite Wikipedia and [Cowgod](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#8xy6) documenting otherwise.
 
 ## Resources
 - [CHIP-8 Wikipedia page](https://en.wikipedia.org/wiki/CHIP-8)
