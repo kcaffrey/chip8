@@ -10,6 +10,10 @@ pub struct SystemState {
     pub program_counter: u16,
     pub stack_pointer: u8,
     pub stack: [u16; 16],
+    pub display: [[bool; 64]; 32],
+    pub keys: [bool; 16],
+    pub waiting_for_key: bool,
+    pub pending_keypress: Option<u8>,
 }
 
 impl Default for SystemState {
@@ -29,6 +33,10 @@ impl SystemState {
             program_counter: 0,
             stack_pointer: 0,
             stack: [0; 16],
+            display: [[false; 64]; 32],
+            keys: [false; 16],
+            waiting_for_key: false,
+            pending_keypress: None,
         };
         system.load_sprites();
         system
@@ -59,6 +67,13 @@ impl SystemState {
         }
     }
 
+    pub fn get_sprite_location(&self, digit: u8) -> std::result::Result<u16, Error> {
+        if digit > 15 {
+            return err(&format!("invalid sprite digit: {}", digit));
+        }
+        Ok(u16::from(digit * 5))
+    }
+
     fn load_sprites(&mut self) {
         let fonts = &mut self.memory[0..80];
         fonts.copy_from_slice(&sprites::HEX_DIGITS);
@@ -73,6 +88,13 @@ mod tests {
     fn system_has_sprites() {
         let system = SystemState::new();
         assert_eq!(&system.memory[0..80], &sprites::HEX_DIGITS[..]);
+    }
+
+    #[test]
+    fn sprite_locations() {
+        let system = SystemState::new();
+        assert_eq!(system.get_sprite_location(5).unwrap(), 25);
+        assert!(system.get_sprite_location(20).is_err());
     }
 
     #[test]

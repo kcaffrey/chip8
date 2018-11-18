@@ -1,5 +1,7 @@
 extern crate chip8;
 
+use std::time::Duration;
+
 use chip8::Emulator;
 
 #[test]
@@ -15,7 +17,8 @@ fn test_loop() {
     let mut emulator = Emulator::default();
     emulator.load_program(&program).expect("program is valid");
     for _ in 0..200 {
-        emulator.execute_cycle().expect("shouldn't crash");
+        emulator
+            .execute_cycle(Duration::from_millis(17))
+            .expect("shouldn't crash");
     }
-    // TODO: verify display
 }
