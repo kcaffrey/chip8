@@ -15,6 +15,17 @@ jobs:
         curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain $RUSTUP_TOOLCHAIN
         echo "##vso[task.setvariable variable=PATH;]$PATH:$HOME/.cargo/bin"
       displayName: Install rust
+  - ${{ if eq(parameters.name, 'Linux') }}:
+    # Linux
+    - script: |
+        sudo apt-get -qq update && sudo apt-get install -y libasound2-dev
+        wget http://libsdl.org/release/SDL2-2.0.5.tar.gz && tar -xzvf SDL2-2.0.5.tar.gz \
+            && pushd SDL2-2.0.5 && ./configure --prefix=/usr && make && sudo make install && popd
+      displayName: Install alsa and SDL
+  - ${{ if eq(parameters.name, 'macOS') }}:
+    # macOS
+    - script: |
+       brew update && brew install sdl2
   - ${{ if eq(parameters.name, 'Windows') }}:
     # Windows.
     - script: |
